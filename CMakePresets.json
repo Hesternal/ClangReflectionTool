@@ -1,0 +1,120 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 26,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "cmake-exe",
+            "cmakeExecutable": "C:/Program Files/CMake/bin/cmake.exe",
+            "hidden": true
+        },
+
+        {
+            "name": "binary-dir",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "hidden": true
+        },
+
+        {
+            "name": "configuration-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "hidden": true
+        },
+        {
+            "name": "configuration-release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "hidden": true
+        },
+        {
+            "name": "configuration-multi",
+            "cacheVariables": {
+                "CMAKE_CONFIGURATION_TYPES": "Debug;Release"
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "toolset-clang-cl",
+            "toolset":{
+                "strategy": "set",
+                "value": "ClangCL"
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "compiler-clang",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang"
+            },
+            "hidden": true
+        },
+        {
+            "name": "compiler-msvc",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl"
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "generator-ninja",
+            "generator": "Ninja",
+            "architecture": {
+                "strategy": "external",
+                "value": "x64"
+            },
+            "hidden": true
+        },
+        {
+            "name": "generator-ninja-multi",
+            "generator": "Ninja Multi-Config",
+            "architecture": {
+                "strategy": "external",
+                "value": "x64"
+            },
+            "hidden": true
+        },
+        {
+            "name": "generator-vs",
+            "generator": "Visual Studio 17 2022",
+            "architecture": {
+                "strategy": "set",
+                "value": "x64"
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "settings-vs-clang",
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            },
+            "hidden": true
+        },
+        {
+            "name": "settings-vs-msvc",
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "enableMicrosoftCodeAnalysis": true
+                }
+            },
+            "hidden": true
+        },
+
+        { "name": "ninja-msvc",         "inherits": [ "binary-dir", "configuration-multi",   "compiler-msvc", "generator-ninja-multi", "settings-vs-msvc", "cmake-exe" ] },
+        { "name": "ninja-msvc-debug",   "inherits": [ "binary-dir", "configuration-debug",   "compiler-msvc", "generator-ninja",       "settings-vs-msvc", "cmake-exe" ] },
+        { "name": "ninja-msvc-release", "inherits": [ "binary-dir", "configuration-release", "compiler-msvc", "generator-ninja",       "settings-vs-msvc", "cmake-exe" ] },
+
+        { "name": "vs-msvc", "inherits": [ "binary-dir", "configuration-multi", "compiler-msvc", "generator-vs", "settings-vs-msvc" ] }
+    ]
+}

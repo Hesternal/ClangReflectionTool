@@ -1,0 +1,108 @@
+[
+    {
+        "directory": "<DIRECTORY_WHERE_YOU_PRECOMPILE_MODULES_WITH_CLANG>",
+        "file": "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Private\\Core-Concepts.ixx",
+        "output": "Hesternal.Core\\Core-Concepts.pcm",
+        "arguments": [
+            "C:\\Program Files\\LLVM\\17.0.0\\bin\\clang.exe",
+            "-std=c++20",
+            "-xc++-module",
+            "-fmodule-file=std\\type_traits.pcm",
+            "-fmodule-file=std\\concepts.pcm",
+            "-fmodule-file=Hesternal.Core\\Core-FundamentalTypes.pcm",
+            "--precompile",
+            "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Private\\Core-Concepts.ixx",
+            "-o",
+            "Hesternal.Core\\Core-Concepts.pcm"
+        ]
+    },
+    {
+        "directory": "<DIRECTORY_WHERE_YOU_PRECOMPILE_MODULES_WITH_CLANG>",
+        "file": "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Private\\Core-Constants.ixx",
+        "output": "Hesternal.Core\\Core-Constants.pcm",
+        "arguments": [
+            "C:\\Program Files\\LLVM\\17.0.0\\bin\\clang.exe",
+            "-std=c++20",
+            "-xc++-module",
+            "-fmodule-file=std\\limits.pcm",
+            "-fmodule-file=std\\numbers.pcm",
+            "-fmodule-file=Hesternal.Core\\Core-Concepts.pcm",
+            "--precompile",
+            "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Private\\Core-Constants.ixx",
+            "-o",
+            "Hesternal.Core\\Core-Constants.pcm"
+        ]
+    },
+    {
+        "directory": "<DIRECTORY_WHERE_YOU_PRECOMPILE_MODULES_WITH_CLANG>",
+        "file": "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Private\\Core-FundamentalTypes.ixx",
+        "output": "Hesternal.Core\\Core-FundamentalTypes.pcm",
+        "arguments": [
+            "C:\\Program Files\\LLVM\\17.0.0\\bin\\clang.exe",
+            "-std=c++20",
+            "-xc++-module",
+            "-fmodule-file=std\\cstdint.pcm",
+            "--precompile",
+            "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Private\\Core-FundamentalTypes.ixx",
+            "-o",
+            "Hesternal.Core\\Core-FundamentalTypes.pcm"
+        ]
+    },
+    {
+        "directory": "<DIRECTORY_WHERE_YOU_PRECOMPILE_MODULES_WITH_CLANG>",
+        "file": "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Private\\Core-Literals.ixx",
+        "output": "Hesternal.Core\\Core-Literals.pcm",
+        "arguments": [
+            "C:\\Program Files\\LLVM\\17.0.0\\bin\\clang.exe",
+            "-std=c++20",
+            "-xc++-module",
+            "--precompile",
+            "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Private\\Core-Literals.ixx",
+            "-o",
+            "Hesternal.Core\\Core-Literals.pcm"
+        ]
+    },
+    {
+        "directory": "<DIRECTORY_WHERE_YOU_PRECOMPILE_MODULES_WITH_CLANG>",
+        "file": "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Public\\Core.ixx",
+        "output": "Hesternal.Core\\Core.pcm",
+        "arguments": [
+            "C:\\Program Files\\LLVM\\17.0.0\\bin\\clang.exe",
+            "-std=c++20",
+            "-xc++-module",
+            "-fmodule-file=Hesternal.Core\\Core-Concepts.pcm",
+            "-fmodule-file=Hesternal.Core\\Core-Constants.pcm",
+            "-fmodule-file=Hesternal.Core\\Core-Literals.pcm",
+            "-fmodule-file=Hesternal.Core\\Core-FundamentalTypes.pcm",
+            "--precompile",
+            "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\Public\\Core.ixx",
+            "-o",
+            "Hesternal.Core\\Core.pcm"
+        ]
+    },
+
+    {
+        "directory": "<DIRECTORY_WHERE_YOU_PRECOMPILE_MODULES_WITH_CLANG>",
+        "file": "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\HesternalEngine\\Graphics\\Public\\GraphicsTypes.ixx",
+        "output": "GraphicsTypes.pcm",
+        "arguments": [
+            "C:\\Program Files\\LLVM\\17.0.0\\bin\\clang.exe",
+            "-std=c++20",
+            "-xc++-module",
+            "-I<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\Hesternal.Core\\IncludePublic",
+            "-I<PATH_TO_HESTERNAL_ROOT_DIR>\\build\\generated\\HesternalEngine\\Include",
+            "-DHS_PLATFORM_WINDOWS",
+            "-DHS_COMPILER_MSVC",
+            "-DHS_CONFIGURATION_RELEASE",
+            "-fmodule-file=std\\memory.pcm",
+            "-fmodule-file=std\\optional.pcm",
+            "-fmodule-file=std\\string.pcm",
+            "-fmodule-file=std\\vector.pcm",
+            "-fmodule-file=Hesternal.Core\\Core.pcm",
+            "--precompile",
+            "<PATH_TO_HESTERNAL_ROOT_DIR>\\Hesternal\\Source\\HesternalEngine\\Graphics\\Public\\GraphicsTypes.ixx",
+            "-o",
+            "GraphicsTypes.pcm"
+        ]
+    }
+]

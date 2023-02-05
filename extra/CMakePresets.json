@@ -1,0 +1,158 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 26,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "cmake-exe",
+            "cmakeExecutable": "C:/Program Files/CMake/bin/cmake.exe",
+            "hidden": true
+        },
+
+        {
+            "name": "binary-dir",
+            "binaryDir": "${sourceParentDir}/build/${presetName}",
+            "hidden": true
+        },
+
+        {
+            "name": "configuration-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "hidden": true
+        },
+        {
+            "name": "configuration-release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "hidden": true
+        },
+        {
+            "name": "configuration-multi",
+            "cacheVariables": {
+                "CMAKE_CONFIGURATION_TYPES": "Debug;Release"
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "toolset-clang-cl",
+            "toolset":{
+                "strategy": "set",
+                "value": "ClangCL"
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "compiler-clang",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang"
+            },
+            "hidden": true
+        },
+        {
+            "name": "compiler-msvc",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl"
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "generator-ninja",
+            "generator": "Ninja",
+            "architecture": {
+                "strategy": "external",
+                "value": "x64"
+            },
+            "hidden": true
+        },
+        {
+            "name": "generator-ninja-multi",
+            "generator": "Ninja Multi-Config",
+            "architecture": {
+                "strategy": "external",
+                "value": "x64"
+            },
+            "hidden": true
+        },
+        {
+            "name": "generator-vs",
+            "generator": "Visual Studio 17 2022",
+            "architecture": {
+                "strategy": "set",
+                "value": "x64"
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "settings-vs-clang",
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            },
+            "hidden": true
+        },
+        {
+            "name": "settings-vs-msvc",
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "enableMicrosoftCodeAnalysis": true
+                }
+            },
+            "hidden": true
+        },
+
+        {
+            "name": "vars-llvm-common",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "C:/Program Files/LLVM/17.0.0",
+                "CMAKE_SKIP_INSTALL_ALL_DEPENDENCY": true,
+
+                "BUILD_SHARED_LIBS": "OFF",
+                "LLVM_BUILD_32_BITS": "OFF",
+                "LLVM_BUILD_BENCHMARKS": "OFF",
+                "LLVM_BUILD_DOCS": "OFF",
+                "LLVM_BUILD_EXAMPLES": "OFF",
+                "LLVM_BUILD_INSTRUMENTED_COVERAGE": "OFF",
+                "LLVM_BUILD_TESTS": "OFF",
+                "LLVM_ENABLE_BINDINGS": "OFF",
+                "LLVM_ENABLE_DOXYGEN": "OFF",
+                "LLVM_ENABLE_PROJECTS": "clang",
+                "LLVM_ENABLE_RTTI": "OFF",
+                "LLVM_ENABLE_SPHINX": "OFF",
+                "LLVM_INCLUDE_BENCHMARKS": "OFF",
+                "LLVM_INCLUDE_EXAMPLES": "OFF",
+                "LLVM_INCLUDE_TESTS": "OFF",
+                "LLVM_OPTIMIZED_TABLEGEN": "ON",
+                "LLVM_TARGETS_TO_BUILD": "X86"
+            },
+            "hidden": true
+        },
+        {
+            "name": "vars-llvm-msvc",
+            "cacheVariables": {
+                "LLVM_ENABLE_DIA_SDK": "ON"
+            },
+            "hidden": true
+        },
+
+        { "name": "ninja-clang-debug",   "inherits": [ "binary-dir", "configuration-debug",   "compiler-clang", "generator-ninja", "settings-vs-clang" ] },
+        { "name": "ninja-clang-release", "inherits": [ "binary-dir", "configuration-release", "compiler-clang", "generator-ninja", "settings-vs-clang" ] },
+
+        { "name": "ninja-msvc",          "inherits": [ "binary-dir", "configuration-multi",   "compiler-msvc", "generator-ninja-multi", "settings-vs-msvc", "cmake-exe", "vars-llvm-common", "vars-llvm-msvc" ] },
+        { "name": "ninja-msvc-debug",    "inherits": [ "binary-dir", "configuration-debug",   "compiler-msvc", "generator-ninja",       "settings-vs-msvc", "cmake-exe", "vars-llvm-common", "vars-llvm-msvc" ] },
+        { "name": "ninja-msvc-release",  "inherits": [ "binary-dir", "configuration-release", "compiler-msvc", "generator-ninja",       "settings-vs-msvc", "cmake-exe", "vars-llvm-common", "vars-llvm-msvc" ] },
+
+        { "name": "visual-studio-clang", "inherits": [ "binary-dir", "configuration-multi", "toolset-clang-cl", "generator-vs", "settings-vs-clang", "vars-llvm-common", "vars-llvm-msvc" ] },
+        { "name": "visual-studio-msvc",  "inherits": [ "binary-dir", "configuration-multi", "compiler-msvc",    "generator-vs", "settings-vs-msvc",  "vars-llvm-common", "vars-llvm-msvc" ] }
+    ]
+}
